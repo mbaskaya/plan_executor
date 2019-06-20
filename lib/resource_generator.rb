@@ -66,7 +66,7 @@ module Crucible
               gen = SecureRandom.base64
             end
           elsif type == 'xhtml'
-            gen = "<div>#{SecureRandom.base64}</div>"
+		  gen = "<div xmlns:\"http://www.w3.org/1999/xhtml\">#{SecureRandom.base64}</div>"
           elsif type == 'uri'
             gen = "http://projectcrucible.org/#{SecureRandom.base64}"
           elsif type == 'uuid'
@@ -680,7 +680,7 @@ module Crucible
             p.searchType = nil unless p.type == 'string'
           end
         when FHIR::Patient
-          resource.maritalStatus = minimal_codeableconcept('http://hl7.org/fhir/v3/MaritalStatus','S')
+		resource.maritalStatus = minimal_codeableconcept('http://terminology.hl7.org/CodeSystem/v3-MaritalStatus','S')
         when FHIR::PlanDefinition
           resource.action.each do |a|
             a.action.each do |b|
