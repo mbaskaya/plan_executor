@@ -41,7 +41,7 @@ module Crucible
         unselected_multiples.each do |key|
           resource.method("#{key}=").call(nil)
         end
-=begin
+
         resource.class::METADATA.each do |key, meta|
           type = meta['type']
           next if type == 'Meta'
@@ -65,8 +65,8 @@ module Crucible
             else
               gen = SecureRandom.base64
             end
-          elsif type == 'xhtml'
-            gen = '<div xmlns:"http://www.w3.org/1999/xhtml">abcdefg</div>'
+          #elsif type == 'xhtml'
+          #  gen = '<div xmlns:"http://www.w3.org/1999/xhtml">abcdefg</div>'
           elsif type == 'uri'
             gen = "http://projectcrucible.org/#{SecureRandom.base64}"
           elsif type == 'uuid'
@@ -147,7 +147,7 @@ module Crucible
           gen = [gen] if meta['max'] > 1 && !gen.nil?
           resource.method("#{method}=").call(gen) if !gen.nil?
         end
-=end
+
         resource
       end
 
