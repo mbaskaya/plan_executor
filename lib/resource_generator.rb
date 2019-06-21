@@ -45,7 +45,7 @@ module Crucible
         resource.class::METADATA.each do |key, meta|
           type = meta['type']
           next if type == 'Meta'
-          next if ['id','contained','version','versionId','implicitRules'].include? key
+          next if ['id','contained','version','versionId','implicitRules', 'text'].include? key
           next if unselected_multiples.include?(key)
 
           gen = nil
